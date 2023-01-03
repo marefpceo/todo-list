@@ -1,17 +1,21 @@
-import createItem from './todoItem';
+// import createTask from './task';
+import { addProject, projects } from './project';
 
-const testItem = createItem('Test', 'Testing object creation', '1/30/23');
-const testItem2 = createItem('Test2', '2nd time', '1/30/23');
-const testItem3 = createItem('Test3', 'Last', '1/30/23');
-const array = [];
+addProject('Personal');
+addProject('Work');
 
-array.push(testItem);
-array.push(testItem2);
-array.push(testItem3);
+// const testItem = createTask('Test', 'Testing object creation', '1/30/23');
+// const testItem2 = createTask('Test2', '2nd time', '1/30/23');
+// const testItem3 = createTask('Test3', 'Last', '1/30/23');
+// const array = [];
+
+// array.push(testItem);
+// array.push(testItem2);
+// array.push(testItem3);
 
 // const title = prompt('Enter a Title: ');
 // const description = prompt('Enter a description: ');
 // const dueDate = prompt('Enter a due date: ');
 
 // array.push(createItem(title, description, dueDate));
-console.log(array);
+console.log(projects);
