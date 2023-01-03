@@ -1,0 +1,15 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>410</x><y>70</y><w>190</w><h>80</h></coordinates><panel_attributes>index.js
+--
+
+imports: 
+ - createItem from todoItem.js</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>220</y><w>230</w><h>180</h></coordinates><panel_attributes>todoItem.js
+--
+createItem (title, description, dueDate)
+	-createDate
+	-priority
+return {title, description, dueDate, 
+             createDate, priority}
+
+--
+exports:
+	-createItem</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>70</y><w>190</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;150;10;10;170;10</additional_attributes></element></diagram>

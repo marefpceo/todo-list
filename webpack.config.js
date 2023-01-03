@@ -4,6 +4,7 @@ module.exports = {
   entry: './src/index.js',
   watch: true,
   mode: 'development',
+  devtool: 'inline-source-map',
   output: {
     clean: {
       keep: 'index.html'
