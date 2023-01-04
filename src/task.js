@@ -1,5 +1,7 @@
+import format from 'date-fns/format';
+
 const createTask = (title, description, dueDate) => {
-  const createDate = Date.now();
+  const createDate = format(Date.now(), 'MM/dd/yyyy');
   const priority = 'Low';
   const completed = false;
   
