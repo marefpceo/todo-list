@@ -1,17 +1,18 @@
-// import createTask from './task';
-import { addProject, projects } from './project';
+import createTask from './task';
+import { addProject, projects, addTask } from './project';
 
 addProject('Personal');
 addProject('Work');
 
-// const testItem = createTask('Test', 'Testing object creation', '1/30/23');
-// const testItem2 = createTask('Test2', '2nd time', '1/30/23');
-// const testItem3 = createTask('Test3', 'Last', '1/30/23');
-// const array = [];
+const testItem = createTask('Test', 'Testing object creation', '1/30/23');
+const testItem2 = createTask('Test2', '2nd time', '1/30/23');
+const testItem3 = createTask('Test3', 'Last', '1/30/23');
 
-// array.push(testItem);
-// array.push(testItem2);
-// array.push(testItem3);
+addTask(projects[0], testItem);
+addTask(projects[0], testItem2);
+addTask(projects[1], testItem3);
+
+const project = projects[0];
 
 // const title = prompt('Enter a Title: ');
 // const description = prompt('Enter a description: ');
@@ -19,3 +20,5 @@ addProject('Work');
 
 // array.push(createItem(title, description, dueDate));
 console.log(projects);
+console.log(project);
+// console.log(personal);

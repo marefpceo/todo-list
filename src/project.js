@@ -2,16 +2,23 @@ const projects = [];
 let projectCount = 0;
 
 const createProject = (name) => {
+  const project = {};
+  project.name = name;
   projectCount += 1; 
-  const projectId = `2023${projectCount}`;
+  project.projectId = `2023${projectCount}`;
+  project.tasks = [];
 
-  // const addTask = (title) => {};
-
-  return {name, projectId};
+  return project;
 }
 
-const addProject = (name) => {
-  projects.push(createProject(name));
-}
+// Adds created project to the projects array
+const addProject = (projectName) => {
+  projects.push(createProject(projectName));
+};
 
-export { addProject, projects };
+// Adds created tasks to project task property
+const addTask = (taskObj, taskItem) => {
+  taskObj.tasks.push(taskItem);
+};
+
+export { projects, addProject, addTask };
