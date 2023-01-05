@@ -1,5 +1,14 @@
+import { pageHeader, asideArea, sectionArea } from './pageLayout';
 import createTask from './task';
 import { addProject, projects, addTask } from './project';
+import './style.css';
+
+pageHeader();
+asideArea();
+sectionArea();
+
+/* *****Content below is for testing purposes only. ***** */
+/* *****Delete when complete. ***** */
 
 addProject('Personal');
 addProject('Work');

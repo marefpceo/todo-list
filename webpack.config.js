@@ -2,15 +2,15 @@ const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
-  watch: true,
   mode: 'development',
   devtool: 'inline-source-map',
   output: {
     clean: {
-      keep: 'index.html'
+      keep: /index.html/,
     },
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: './assets/[name][ext][query]',
     publicPath: '',
   },
   module: {
@@ -22,6 +22,9 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.ttf$/i,
       },
     ],
   },

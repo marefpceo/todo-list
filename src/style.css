@@ -1,0 +1,64 @@
+:root {
+  --primary-text: #354259;
+  --secondary-text: #ece5c7;
+  --primary-bg: #cdc2ae;
+  --secondary-bg: #ece5c7;
+  --header-bg: #354259;
+  --accent: #c2ded1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-text);
+  color: var(--secondary-text);
+  height: 10%;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;  
+}
+
+header img {
+  width: 5rem;
+  height: auto;
+}
+
+aside {
+  display: grid;
+  background-color: var(--secondary-bg);
+  grid-row: 2;
+  width: 400px;
+}
+
+section {
+  display: grid;
+  grid-row: 1;
+  grid-column: 2;
+  background-color: var(--primary-bg);
+  min-width: 100%;
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 25% 75%;
+  grid-template-columns: 1fr 3fr;
+}
+
