@@ -11,7 +11,7 @@ const pageHeader = () => {
   const h1 = document.createElement('h1');
   const logo = document.createElement('img');
   const p = document.createElement('p');
-  const date = format(Date.now(), 'EEEE, LLLL, Lo, yyyy');
+  const date = format(Date.now(), 'EEEE, LLLL, do, yyyy');
 
   logo.src = checkListIcon;
   logoDiv.className = 'logo';
