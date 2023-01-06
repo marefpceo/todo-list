@@ -1,7 +1,9 @@
 import format from 'date-fns/format';
 import checkListIcon from './assets/images/checklist.svg';
+import { createViewMenu, createProjectsMenu, createContacts } from './sidebarContent';
 
 const content = document.getElementById('content');
+const container = document.createElement('div');
 
 const pageHeader = () => {
   const header = document.createElement('header');
@@ -26,6 +28,11 @@ const pageHeader = () => {
   content.appendChild(header);
 };
 
+const containerDiv = () => {
+  container.className = 'container';
+  content.appendChild(container);
+};
+
 const asideArea = () => {
   const sidebarDivs = ['viewDiv', 'projectsDiv', 'contactDiv'];
   const sidebar = document.createElement('aside');
@@ -37,13 +44,16 @@ const asideArea = () => {
     sidebar.appendChild(sidebarDivs[i]);
   }
 
-  content.appendChild(sidebar);
+  container.appendChild(sidebar);
+  createViewMenu();
+  createProjectsMenu();
+  createContacts();
 };
 
 const sectionArea = () => {
   const section = document.createElement('section');
-
-  content.appendChild(section);
+  
+  container.appendChild(section);
 };
 
-export { pageHeader, asideArea, sectionArea };
+export { pageHeader, asideArea, sectionArea, containerDiv };

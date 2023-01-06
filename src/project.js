@@ -6,14 +6,17 @@ const createProject = (name) => {
   project.name = name;
   projectCount += 1; 
   project.projectId = `2023${projectCount}`;
-  project.tasks = [];
+  project.tasks = ['Pick up dry cleaning'];
 
   return project;
 }
 
 // Adds created project to the projects array
-const addProject = (projectName) => {
-  projects.push(createProject(projectName));
+const addProject = (pName) => {
+  // const pName = prompt('Enter Name');
+  const newProject = createProject(pName)
+  projects.push(newProject);
+  return projects;
 };
 
 // Adds created tasks to project task property
