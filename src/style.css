@@ -4,6 +4,7 @@
   --primary-bg: #cdc2ae;
   --secondary-bg: #ece5c7;
   --header-bg: #354259;
+  --dark-50: #35425932;
   --accent: #c2ded1;
 }
 
@@ -13,6 +14,7 @@
 
 body {
   margin: 0;
+  font-size: 12pt;
 }
 
 #content {
@@ -28,7 +30,7 @@ header {
   background-color: var(--primary-text);
   color: var(--secondary-text);
   padding: 20px;
-  box-shadow: 0px 0px 6px 0px #354259;
+  box-shadow: 0px 0px 6px 0px var(--header-bg);
   position: relative;
   z-index: 10;
 }
@@ -57,7 +59,7 @@ aside {
   display: grid;
   grid-template-rows: 20% 65% 15%;
   background-color: var(--secondary-bg);
-  box-shadow: 0px 0px 6px 0px #354259;
+  box-shadow: 0px 0px 6px 0px var(--header-bg);
   position: relative;
   z-index: 5;
 }
@@ -111,4 +113,81 @@ aside {
 
 section {
   background-color: var(--primary-bg);
+}
+
+h3 {
+  margin: 0;
+  padding: 5px;
+  color: var(--primary-text);
+  text-align: center;
+}
+
+.modalDiv {
+  display: block;
+  position: relative;
+  z-index: 50;
+  left: 25%;
+  top: 25%;
+  max-width: 25%;
+  min-height: 20%;
+  background-color: var(--secondary-bg);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--accent);
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 0px var(--header-bg);
+}
+
+.modalHeader {
+  height: 30px;
+  background-color: var(--accent);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--dark-50);
+  border-bottom-style: solid;
+}
+
+.modalBody {
+  color: var(--primary-text);
+  padding: 20px 0 20px 10px;
+}
+
+.modalBody input {
+  width: 80%;
+  border: none;
+  border-radius: 3px;
+  height: 1.5rem;
+  box-shadow: 0px 0px 5px 0px var(--accent) inset;
+}
+
+.modalBody input:focus {
+  border-radius: 3px;
+  border-color: var(--primary-text);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: center;
+  gap: 25%;
+  padding: 20px 0 20px 10px;
+}
+
+button {
+  color: var(--primary-text);
+  font-size: 12pt;
+  background-color: var(--accent);
+  width: 5rem;
+  height: 1.8rem;
+  border-radius: 3px;
+  border-color: var(--dark-50);
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: 0px 0px 1px 0px var(--header-bg);
+}
+
+button:active {
+  transform: scale(0.9);
 }

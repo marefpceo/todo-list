@@ -4,6 +4,7 @@ import { createViewMenu, createProjectsMenu, createContacts } from './sidebarCon
 
 const content = document.getElementById('content');
 const container = document.createElement('div');
+const section = document.createElement('section');
 
 const pageHeader = () => {
   const header = document.createElement('header');
@@ -19,11 +20,8 @@ const pageHeader = () => {
   
   p.innerHTML = date;
 
-  logoDiv.appendChild(logo);
-  logoDiv.appendChild(h1);
-  
-  header.appendChild(logoDiv);
-  header.appendChild(p);
+  logoDiv.append(logo, h1);
+  header.append(logoDiv, p);
 
   content.appendChild(header);
 };
@@ -51,9 +49,8 @@ const asideArea = () => {
 };
 
 const sectionArea = () => {
-  const section = document.createElement('section');
   
   container.appendChild(section);
 };
 
-export { pageHeader, asideArea, sectionArea, containerDiv };
+export { pageHeader, asideArea, sectionArea, containerDiv, section };

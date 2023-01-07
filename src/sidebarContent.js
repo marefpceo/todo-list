@@ -36,11 +36,8 @@ const createProjectsMenu = () => {
     li.innerHTML = projects[i].name;
     ul.appendChild(li);
   }
-
   h2.innerHTML = 'Projects';
-
-  projectsDiv.appendChild(h2);
-  projectsDiv.appendChild(ul);
+  projectsDiv.append(h2, ul);
 }
 
 const createContacts = () => {
