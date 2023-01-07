@@ -34,4 +34,4 @@ const taskModal = () => {
 
 };
 
-export { projectModal, baseModal, taskModal };
+export { projectModal, baseModal, taskModal, modalDiv, modalFooter };

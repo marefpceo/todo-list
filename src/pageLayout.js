@@ -1,5 +1,6 @@
 import format from 'date-fns/format';
 import checkListIcon from './assets/images/checklist.svg';
+import { projectAddButton, taskAddButton } from './forms';
 import { createViewMenu, createProjectsMenu, createContacts } from './sidebarContent';
 
 const content = document.getElementById('content');
@@ -49,7 +50,11 @@ const asideArea = () => {
 };
 
 const sectionArea = () => {
-  
+  const buttonDiv = document.createElement('div');
+  buttonDiv.id = 'buttonDiv';
+  buttonDiv.innerHTML = projectAddButton;
+  buttonDiv.innerHTML += taskAddButton;
+  section.appendChild(buttonDiv);
   container.appendChild(section);
 };
 

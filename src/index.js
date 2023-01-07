@@ -1,7 +1,7 @@
-import { pageHeader, containerDiv, sectionArea, asideArea } from './pageLayout';
+import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
 import { addProject } from './project';
-import { baseModal, projectModal } from './modals';
-import { projectForm } from './forms';
+import { baseModal, projectModal, modalDiv, modalFooter } from './modals';
+// import { projectForm } from './forms';
 import './style.css';
 
 addProject('Personal');
@@ -9,9 +9,17 @@ pageHeader();
 containerDiv();
 asideArea();
 sectionArea();
-projectModal();
 
-baseModal();
+section.addEventListener('click', (e) => {
+  if (e.target.id === 'projectAdd-Btn') {
+    modalDiv.style.display = 'block';
+    projectModal();
+    baseModal();
+  };
+});
 
-
-console.log(projectForm);
+modalFooter.addEventListener('click', (e) => {
+  if (e.target.id === 'cancelBtn') {
+    modalDiv.style.display = 'none';
+  };
+});

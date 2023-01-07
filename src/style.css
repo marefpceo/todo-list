@@ -112,7 +112,25 @@ aside {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
   background-color: var(--primary-bg);
+}
+
+#buttonDiv {
+  display: flex;
+  justify-content: end;
+}
+
+#projectAdd-Btn,
+#taskAdd-Btn {
+  width: 8rem;
+  margin: 20px;
+}
+
+button:hover {
+  box-shadow: 0px 0px 8px 0px var(--header-bg);
+  cursor: pointer;
 }
 
 h3 {
@@ -126,8 +144,8 @@ h3 {
   display: block;
   position: relative;
   z-index: 50;
-  left: 25%;
-  top: 25%;
+  left: 30%;
+  top: 20%;
   max-width: 25%;
   min-height: 20%;
   background-color: var(--secondary-bg);
@@ -191,3 +209,4 @@ button {
 button:active {
   transform: scale(0.9);
 }
+
