@@ -1,4 +1,4 @@
-import { projectForm, submitButton, cancelButton } from './forms';
+import { projectForm, taskForm, submitButton, cancelButton } from './forms';
 import { section } from './pageLayout';
 
 const modalDiv = document.createElement('div');
@@ -18,10 +18,12 @@ const baseModal = () => {
   modalDiv.appendChild(modalFooter);
 
   section.appendChild(modalDiv);
-
 };
 
 const projectModal = () => {
+  modalDiv.style.display = 'block';
+  document.getElementById('projectAdd-Btn').disabled = true;
+  document.getElementById('taskAdd-Btn').disabled = true;
   h3.innerText = 'Add Project';
   modalHeader.appendChild(h3);
   modalDiv.appendChild(modalHeader);
@@ -31,7 +33,15 @@ const projectModal = () => {
 };
 
 const taskModal = () => {
-
+  modalDiv.style.display = 'block';
+  document.getElementById('projectAdd-Btn').disabled = true;
+  document.getElementById('taskAdd-Btn').disabled = true;
+  h3.innerText = 'Add Task';
+  modalHeader.appendChild(h3);
+  modalDiv.appendChild(modalHeader);
+  modalBody.innerHTML = taskForm;
+  modalFooter.innerHTML = submitButton;
+  modalFooter.innerHTML += cancelButton;
 };
 
 export { projectModal, baseModal, taskModal, modalDiv, modalFooter };
