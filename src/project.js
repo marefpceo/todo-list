@@ -1,3 +1,5 @@
+import format from 'date-fns/format';
+
 const projects = [];
 let projectCount = 0;
 
@@ -24,4 +26,12 @@ const addTask = (taskObj, taskItem) => {
   taskObj.tasks.push(taskItem);
 };
 
-export { projects, addProject, addTask };
+const createTask = (title, description, dueDate) => {
+  const createDate = format(Date.now(), 'MM/dd/yyyy');
+  const priority = 'Low';
+  const completed = false;
+  
+  return {title, description, dueDate, createDate, priority, completed};
+ };
+
+export { projects, addProject, addTask, createTask };

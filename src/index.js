@@ -1,5 +1,5 @@
 import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
-import { addProject } from './project';
+import { addProject, projects } from './project';
 import { modalDiv, modalFooter, modalContent } from './modals';
 // import { projectForm } from './forms';
 import './style.css';
@@ -9,7 +9,6 @@ pageHeader();
 containerDiv();
 asideArea();
 sectionArea();
-
 
 section.addEventListener('click', (e) => {
   let targetId = '';
@@ -29,3 +28,5 @@ modalFooter.addEventListener('click', (e) => {
     document.getElementById('taskAdd-Btn').disabled = false;
   };
 });
+
+console.log(projects);
