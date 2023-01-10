@@ -1,6 +1,6 @@
 import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
 import { addProject } from './project';
-import { baseModal, projectModal, taskModal, modalDiv, modalFooter } from './modals';
+import { modalDiv, modalFooter, modalContent } from './modals';
 // import { projectForm } from './forms';
 import './style.css';
 
@@ -12,13 +12,13 @@ sectionArea();
 
 
 section.addEventListener('click', (e) => {
+  let targetId = '';
   if (e.target.id === 'projectAdd-Btn') {
-    projectModal();
-    baseModal();
+    targetId = e.target.id;
+    modalContent(targetId);
   };
   if (e.target.id === 'taskAdd-Btn') {
-    taskModal();
-    baseModal();
+    modalContent(e.target.id);
   };
 });
 

@@ -22,9 +22,9 @@ const createViewMenu = () => {
     img.src = viewOptions[i].icon;
     li.append(img, p);
     ul.appendChild(li);
-  }
+  };
   viewDiv.appendChild(ul);
-}
+};
 
 const createProjectsMenu = () => {
   const projectsDiv = document.getElementById('projectsDiv');
@@ -35,10 +35,10 @@ const createProjectsMenu = () => {
     const li = document.createElement('li');
     li.innerHTML = projects[i].name;
     ul.appendChild(li);
-  }
+  };
   h2.innerHTML = 'Projects';
   projectsDiv.append(h2, ul);
-}
+};
 
 const createContacts = () => {
   const logos = [githubIcon, linkedinIcon, twitterIcon];
@@ -48,7 +48,7 @@ const createContacts = () => {
     const img = document.createElement('img');
     img.src = logos[i];
     contactDiv.appendChild(img);
-  }
-}
+  };
+};
 
 export { createViewMenu, createProjectsMenu, createContacts };

@@ -20,28 +20,29 @@ const baseModal = () => {
   section.appendChild(modalDiv);
 };
 
-const projectModal = () => {
+const modalContent = (targetId) => {
+  let headerTitle = targetId;
+  let formType;
+
   modalDiv.style.display = 'block';
   document.getElementById('projectAdd-Btn').disabled = true;
   document.getElementById('taskAdd-Btn').disabled = true;
-  h3.innerText = 'Add Project';
+
+  if (headerTitle === 'projectAdd-Btn') {
+    headerTitle = 'Add Project';
+    formType = projectForm;
+  }
+  if (headerTitle === 'taskAdd-Btn') {
+    headerTitle = 'Add Task';
+    formType = taskForm;
+  }
+  h3.innerText = headerTitle;
   modalHeader.appendChild(h3);
   modalDiv.appendChild(modalHeader);
-  modalBody.innerHTML = projectForm;
+  modalBody.innerHTML = formType;
   modalFooter.innerHTML = submitButton;
   modalFooter.innerHTML += cancelButton;
+  baseModal();
 };
 
-const taskModal = () => {
-  modalDiv.style.display = 'block';
-  document.getElementById('projectAdd-Btn').disabled = true;
-  document.getElementById('taskAdd-Btn').disabled = true;
-  h3.innerText = 'Add Task';
-  modalHeader.appendChild(h3);
-  modalDiv.appendChild(modalHeader);
-  modalBody.innerHTML = taskForm;
-  modalFooter.innerHTML = submitButton;
-  modalFooter.innerHTML += cancelButton;
-};
-
-export { projectModal, baseModal, taskModal, modalDiv, modalFooter };
+export { baseModal, modalContent, modalDiv, modalFooter };
