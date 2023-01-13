@@ -37,7 +37,8 @@ const createProjectsMenu = () => {
     ul.appendChild(li);
   };
   h2.innerHTML = 'Projects';
-  projectsDiv.append(h2, ul);
+  projectsDiv.appendChild(h2);
+  projectsDiv.appendChild(ul);
 };
 
 const createContacts = () => {
