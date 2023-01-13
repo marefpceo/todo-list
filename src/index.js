@@ -1,10 +1,15 @@
 import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
-import { addProject } from './project';
-import { modalDiv, modalFooter, modalContent } from './modals';
+import { addProject, createTask } from './project';
+import { modalFooter, modalContent, clearModal } from './modals';
 import { createProjectsMenu } from './sidebarContent';
 import './style.css';
+import { enableButtons } from './forms';
+
+let currBtn = '';
 
 addProject('Personal');
+addProject('Test1');
+addProject('Test2');
 pageHeader();
 containerDiv();
 asideArea();
@@ -12,27 +17,34 @@ sectionArea();
 
 section.addEventListener('click', (e) => {
   if (e.target.id === 'projectAdd-Btn') {
-    modalContent(e.target.id);
+    currBtn = e.target.id;
+    modalContent(currBtn);
   };
   if (e.target.id === 'taskAdd-Btn') {
-    modalContent(e.target.id);
+    currBtn = e.target.id;
+    modalContent(currBtn);
   };
 });
 
 modalFooter.addEventListener('click', (e) => {
   if (e.target.id === 'cancelBtn') {
-    modalDiv.style.display = 'none';
-    document.getElementById('projectAdd-Btn').disabled = false;
-    document.getElementById('taskAdd-Btn').disabled = false;
+    clearModal();
+    enableButtons();
   };
   if (e.target.id === 'submitBtn') {
-    const pName = document.getElementById('projectName');
-    addProject(pName.value);
-    document.getElementById('projectsDiv').innerHTML = '';
-    createProjectsMenu();
-    pName.value = '';
-    modalDiv.style.display = 'none';
-    document.getElementById('projectAdd-Btn').disabled = false;
-    document.getElementById('taskAdd-Btn').disabled = false;
+    if (currBtn === 'projectAdd-Btn') {
+      const pName = document.getElementById('projectName');
+      addProject(pName.value);
+      createProjectsMenu();
+      pName.value = '';
+      clearModal();
+      enableButtons();
+    };
+    
+    if (currBtn === 'taskAdd-Btn') {
+      // createTask();
+      clearModal();
+      enableButtons();
+    };
   };
 });

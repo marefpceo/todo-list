@@ -31,10 +31,19 @@ const createProjectsMenu = () => {
   const h2 = document.createElement('h2');
   const ul = document.createElement('ul');
 
+  document.getElementById('projectsDiv').innerHTML = '';
+
   for (let i = 0; i < projects.length; i += 1) {
+    const taskUl = document.createElement('ul');
     const li = document.createElement('li');
     li.innerHTML = projects[i].name;
     ul.appendChild(li);
+    for (let j = 0; j < projects[i].tasks.length; j += 1){
+      const taskLi = document.createElement('li');
+      taskLi.innerHTML = projects[i].tasks[j];
+      taskUl.appendChild(taskLi);
+    }
+    li.appendChild(taskUl);
   };
   h2.innerHTML = 'Projects';
   projectsDiv.appendChild(h2);

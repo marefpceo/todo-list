@@ -19,7 +19,7 @@ body {
 
 #content {
   display: grid;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 10% 90%;
   min-height: 100vh;
 }
 
@@ -29,7 +29,7 @@ header {
   align-items: center;
   background-color: var(--primary-text);
   color: var(--secondary-text);
-  padding: 20px;
+  padding: 0px 50px 0px 50px;
   box-shadow: 0px 0px 6px 0px var(--header-bg);
   position: relative;
   z-index: 10;
@@ -46,7 +46,7 @@ h1 {
 }
 
 header img {
-  width: 5rem;
+  width: 4rem;
   height: auto;
 }
 
@@ -145,7 +145,6 @@ h3 {
   position: relative;
   z-index: 50;
   left: 30%;
-  top: 20%;
   max-width: 25%;
   min-height: 20%;
   background-color: var(--secondary-bg);
@@ -168,14 +167,50 @@ h3 {
 
 .modalBody {
   color: var(--primary-text);
-  padding: 20px 0 20px 10px;
+  padding: 20px 10px 20px 10px;
 }
 
-.modalBody input {
-  width: 80%;
+#projectForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#taskForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+}
+
+#taskForm :nth-child(3) {
+  display: flex;
+  justify-content: space-between;
+}
+
+#taskForm :nth-child(3) div{
+  width: 110px;
+}
+
+#taskForm :nth-child(3) div+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#taskForm :nth-child(4) {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalBody input,
+select,
+textarea {
+  color: var(--primary-text);
+  width: 100%;
   border: none;
   border-radius: 3px;
-  height: 1.5rem;
+  min-height: 1.5rem;
   box-shadow: 0px 0px 5px 0px var(--accent) inset;
 }
 
