@@ -32,15 +32,17 @@ const createProjectsMenu = () => {
   const ul = document.createElement('ul');
 
   document.getElementById('projectsDiv').innerHTML = '';
-
-  for (let i = 0; i < projects.length; i += 1) {
+  let i;
+  for (i = 0; i < projects.length; i += 1) {
     const taskUl = document.createElement('ul');
     const li = document.createElement('li');
+    ul.className = 'projects';
+    li.id = projects[i].projectId;
     li.innerHTML = projects[i].name;
     ul.appendChild(li);
     for (let j = 0; j < projects[i].tasks.length; j += 1){
       const taskLi = document.createElement('li');
-      taskLi.innerHTML = projects[i].tasks[j];
+      taskLi.innerHTML = projects[i].tasks[j].title;
       taskUl.appendChild(taskLi);
     }
     li.appendChild(taskUl);

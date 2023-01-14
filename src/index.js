@@ -1,16 +1,15 @@
 import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
-import { addProject, addTask, getSelectedProject, projects } from './project';
+import { addProject, addTask, getSelectedProject } from './project';
 import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
 import { createProjectsMenu } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
 
 let currBtn = '';
-const projectsDiv = document.getElementById('projectsDiv');
 
 addProject('Personal');
-// addProject('Test1');
-// addProject('Test2');
+addProject('Work');
+addProject('School');
 pageHeader();
 containerDiv();
 asideArea();
@@ -46,12 +45,9 @@ modalFooter.addEventListener('click', (e) => {
       const taskObjIndex = getSelectedProject(getTaskInput().selectedProject);
       addTask(taskObjIndex, getTaskInput().title, getTaskInput().description,
       getTaskInput().dueDate, getTaskInput().priority, getTaskInput().notes);
+      createProjectsMenu();
       clearModal();
       enableButtons();
     };
   };
-});
-
-projectsDiv.addEventListener('click', (e) => {
-  console.log(e.target);
 });
