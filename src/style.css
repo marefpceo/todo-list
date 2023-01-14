@@ -129,7 +129,7 @@ section {
 }
 
 button:hover {
-  box-shadow: 0px 0px 8px 0px var(--header-bg);
+  box-shadow: 0px 0px 5px 2px var(--dark-50);
   cursor: pointer;
 }
 
@@ -205,8 +205,10 @@ h3 {
 
 .modalBody input,
 select,
-textarea {
+textarea,
+option {
   color: var(--primary-text);
+  text-align: left;
   width: 100%;
   border: none;
   border-radius: 3px;

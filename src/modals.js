@@ -43,11 +43,25 @@ const modalContent = (targetId) => {
   modalFooter.innerHTML = submitButton;
   modalFooter.innerHTML += cancelButton;
   baseModal();
-  projectOption();
+
+  if (headerTitle === 'Add New Task') {
+    projectOption();
+  };
+};
+
+const getTaskInput = () => {
+  const title = document.getElementById('task-title').value;
+  const description = document.getElementById('task-description').value;
+  const dueDate = document.getElementById('due-date').value;
+  const priority = document.getElementById('priority').value;
+  const selectedProject = document.getElementById('project-select').value;
+  const notes = document.getElementById('notes').value;
+
+  return {title, description, dueDate, priority, selectedProject, notes};
 };
 
 const clearModal = () => {
   modalDiv.style.display = 'none';
 };
 
-export { baseModal, modalContent, clearModal, modalDiv, modalFooter };
+export { baseModal, modalContent, clearModal, getTaskInput, modalDiv, modalFooter };

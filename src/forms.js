@@ -22,12 +22,12 @@ export const taskForm = `<div id='taskForm'>
                   </div>
                   <div>
                     <label for='description'>Description: </label>
-                    <input type='text' name='descripton' id='task-desciption' required>
+                    <input type='text' name='description' id='task-description' required>
                   </div>
                   <div>
                     <div>  
                       <label for='due-date'>Due Date: </label>
-                      <input type='date' name='due-date' id='due-date'>
+                      <input type='date' name='due-date' id='due-date' required>
                     </div>
                     <div>  
                       <label for='priority'>Priority: </label>
@@ -45,8 +45,7 @@ export const taskForm = `<div id='taskForm'>
                   </div>
                   <div>
                     <label for='notes'>Notes: </label>
-                    <textarea name='notes' id='notes' rows='5' cols='20'>
-                    </textarea>
+                    <textarea name='notes' id='notes' rows='5' cols='20'></textarea>
                   </div>`;
 
 export const submitButton = `<button id='submitBtn'>Submit</button>`;

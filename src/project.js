@@ -1,4 +1,5 @@
 import format from 'date-fns/format';
+import dateInput from 'date-fns/parseISO';
 
 const projects = [];
 let projectCount = 0;
@@ -20,17 +21,31 @@ const addProject = (pName) => {
   return projects;
 };
 
-// Adds created tasks to project task property
-const addTask = (taskObj, taskItem) => {
-  taskObj.tasks.push(taskItem);
-};
-
-const createTask = (title, description, dueDate) => {
-  const createDate = format(Date.now(), 'MM/dd/yyyy');
-  const priority = 'Low';
-  const completed = false;
+const createTask = (title, description, dueDate, priority, notes) => {
+  const task = {};
+  const inputDate = dateInput(dueDate);
   
-  return {title, description, dueDate, createDate, priority, completed};
+  task.title = title;
+  task.description = description;
+  task.dueDate = format(inputDate, 'MM/dd/yyyy');
+  task.priority = priority;
+  task.notes = notes;
+  task.createDate = format(Date.now(), 'MM/dd/yyyy');
+  task.completed = false;
+  
+  return task;
  };
 
-export { projects, addProject, addTask, createTask };
+ // Adds created tasks to project task property
+const addTask = (taskObj, title, description, dueDate, priority, notes) => {
+  const newTask = createTask(title, description, dueDate, priority, notes);
+  projects[taskObj].tasks.push(newTask);
+  console.log(newTask);
+};
+
+const getSelectedProject = (projectId) => {
+  const selection = projects.findIndex(item => item.projectId === projectId);
+  return selection;
+}
+
+export { projects, addProject, addTask, createTask, getSelectedProject };
