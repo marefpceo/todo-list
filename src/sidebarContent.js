@@ -10,9 +10,11 @@ const viewOptions = [{view: 'Today', icon: calDay},
                     {view: 'Week', icon: calWeek},
                     {view: 'All', icon: calMonth}];
 
+const projectsUl = document.createElement('ul');
+
 const createViewMenu = () => {
   const viewDiv = document.getElementById('viewDiv');
-  const ul = document.createElement('ul');
+  const viewUl = document.createElement('ul');
   for (let i = 0; i < viewOptions.length; i += 1){
     const li = document.createElement('li');
     const img = document.createElement('img');
@@ -21,25 +23,25 @@ const createViewMenu = () => {
     p.innerHTML = viewOptions[i].view;
     img.src = viewOptions[i].icon;
     li.append(img, p);
-    ul.appendChild(li);
+    viewUl.appendChild(li);
   };
-  viewDiv.appendChild(ul);
+  viewDiv.appendChild(viewUl);
 };
 
 const createProjectsMenu = () => {
   const projectsDiv = document.getElementById('projectsDiv');
   const h2 = document.createElement('h2');
-  const ul = document.createElement('ul');
+  
 
   document.getElementById('projectsDiv').innerHTML = '';
   let i;
   for (i = 0; i < projects.length; i += 1) {
     const taskUl = document.createElement('ul');
     const li = document.createElement('li');
-    ul.className = 'projects';
+    projectsUl.className = 'projects';
     li.id = projects[i].projectId;
     li.innerHTML = projects[i].name;
-    ul.appendChild(li);
+    projectsUl.appendChild(li);
     for (let j = 0; j < projects[i].tasks.length; j += 1){
       const taskLi = document.createElement('li');
       taskLi.innerHTML = projects[i].tasks[j].title;
@@ -49,7 +51,7 @@ const createProjectsMenu = () => {
   };
   h2.innerHTML = 'Projects';
   projectsDiv.appendChild(h2);
-  projectsDiv.appendChild(ul);
+  projectsDiv.appendChild(projectsUl);
 };
 
 const createContacts = () => {
@@ -63,4 +65,4 @@ const createContacts = () => {
   };
 };
 
-export { createViewMenu, createProjectsMenu, createContacts };
+export { createViewMenu, createProjectsMenu, createContacts, projectsUl };

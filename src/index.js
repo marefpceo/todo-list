@@ -1,9 +1,10 @@
 import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
 import { addProject, addTask, getSelectedProject } from './project';
 import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
-import { createProjectsMenu } from './sidebarContent';
+import { createProjectsMenu, projectsUl } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
+import displayProject from './displayContent';
 
 let currBtn = '';
 
@@ -50,4 +51,10 @@ modalFooter.addEventListener('click', (e) => {
       enableButtons();
     };
   };
+});
+
+projectsUl.addEventListener('click', (e) => {
+  const selection = e.target.id;
+  displayProject(selection);
+  console.log(selection);
 });

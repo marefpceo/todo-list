@@ -76,7 +76,8 @@ aside {
   margin: 0;
 }
 
-#viewDiv li :hover {
+#viewDiv li :hover,
+.projects li:hover {
   cursor: pointer;
 }
 
@@ -117,9 +118,17 @@ section {
   background-color: var(--primary-bg);
 }
 
-#buttonDiv {
+#sectionHead {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--dark-50);
+}
+
+#titleDiv {
+  color: var(--primary-text);
+  font-size: 3rem;
+  padding-left: 20px;
 }
 
 #projectAdd-Btn,

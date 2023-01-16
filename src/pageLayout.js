@@ -6,6 +6,7 @@ import { createViewMenu, createProjectsMenu, createContacts } from './sidebarCon
 const content = document.getElementById('content');
 const container = document.createElement('div');
 const section = document.createElement('section');
+const titleDiv = document.createElement('div');
 
 const pageHeader = () => {
   const header = document.createElement('header');
@@ -50,12 +51,19 @@ const asideArea = () => {
 };
 
 const sectionArea = () => {
+  const sectionHead = document.createElement('div');
   const buttonDiv = document.createElement('div');
+
+  sectionHead.id = 'sectionHead';
+  titleDiv.id = 'titleDiv';
   buttonDiv.id = 'buttonDiv';
   buttonDiv.innerHTML = projectAddButton;
   buttonDiv.innerHTML += taskAddButton;
-  section.appendChild(buttonDiv);
+
+  sectionHead.appendChild(titleDiv);
+  sectionHead.appendChild(buttonDiv);
+  section.appendChild(sectionHead);
   container.appendChild(section);
 };
 
-export { pageHeader, asideArea, sectionArea, containerDiv, section };
+export { pageHeader, asideArea, sectionArea, containerDiv, section, titleDiv };
