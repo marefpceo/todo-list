@@ -32,8 +32,9 @@ const createProjectsMenu = () => {
   const projectsDiv = document.getElementById('projectsDiv');
   const h2 = document.createElement('h2');
   
+  projectsDiv.innerHTML = ''; 
+  projectsUl.innerHTML = '';
 
-  document.getElementById('projectsDiv').innerHTML = '';
   let i;
   for (i = 0; i < projects.length; i += 1) {
     const taskUl = document.createElement('ul');

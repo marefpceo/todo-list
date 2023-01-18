@@ -1,5 +1,6 @@
 import format from 'date-fns/format';
 import dateInput from 'date-fns/parseISO';
+import { populateStorage } from './storeTodo';
 
 const projects = [];
 let projectCount = 0;
@@ -14,10 +15,11 @@ const createProject = (name) => {
   return project;
 };
 
-// Adds created project to the projects array
+// Adds created project to the projects array and to localStorage
 const addProject = (pName) => {
   const newProject = createProject(pName)
   projects.push(newProject);
+  populateStorage(projects);
   return projects;
 };
 
@@ -36,10 +38,11 @@ const createTask = (title, description, dueDate, priority, notes) => {
   return task;
  };
 
- // Adds created tasks to project task property
+ // Adds created tasks to project task property and to localStorage
 const addTask = (taskObj, title, description, dueDate, priority, notes) => {
   const newTask = createTask(title, description, dueDate, priority, notes);
   projects[taskObj].tasks.push(newTask);
+  populateStorage(projects);
   console.log(newTask);
 };
 

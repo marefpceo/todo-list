@@ -1,16 +1,29 @@
 import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
-import { addProject, addTask, getSelectedProject } from './project';
+import { addProject, addTask, getSelectedProject, projects } from './project';
 import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
 import { createProjectsMenu, projectsUl } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
 import displayProject from './displayContent';
+import { getFromStorage, storageAvailable } from './storeTodo';
 
 let currBtn = '';
 
-addProject('Personal');
-addProject('Work');
-addProject('School');
+window.onload = getFromStorage(); 
+storageAvailable('localStorage');
+// console.log(getFromStorage());
+
+if (localStorage.length === 1) {
+  const restoreTemp = getFromStorage();
+  for (let i = 0; i < restoreTemp.length; i += 1) {
+    projects.push(restoreTemp[i]);
+  }
+} else {
+  addProject('Personal');
+  addProject('Work');
+  addProject('School');
+}; 
+
 pageHeader();
 containerDiv();
 asideArea();
