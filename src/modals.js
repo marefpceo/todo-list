@@ -46,7 +46,7 @@ const modalContent = (targetId) => {
 
   if (headerTitle === 'Add New Task') {
     projectOption();
-  };
+  }
 };
 
 const getTaskInput = () => {
@@ -64,4 +64,4 @@ const clearModal = () => {
   modalDiv.style.display = 'none';
 };
 
-export { baseModal, modalContent, clearModal, getTaskInput, modalDiv, modalFooter };
+export { modalContent, clearModal, getTaskInput, modalDiv, modalFooter };

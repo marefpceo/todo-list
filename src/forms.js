@@ -1,11 +1,11 @@
 import { projects } from './project';
 
-export const projectForm = `<div id='projectForm'>
+const projectForm = `<div id='projectForm'>
                     <label for='name'>Name: </label>
                     <input type='text' name='name' id='projectName' placeholder='My Project'>
                   </div>`;
 
-export const projectOption = () => {
+const projectOption = () => {
   const projectSelect = document.getElementById('project-select');
   for (let i = 0; i < projects.length; i += 1){
     const option = document.createElement('option');
@@ -15,7 +15,7 @@ export const projectOption = () => {
   }
 };
 
-export const taskForm = `<div id='taskForm'>
+const taskForm = `<div id='taskForm'>
                   <div>
                     <label for='title'>Title: </label>
                     <input type='text' name='title' id='task-title' required>
@@ -48,15 +48,19 @@ export const taskForm = `<div id='taskForm'>
                     <textarea name='notes' id='notes' rows='5' cols='20'></textarea>
                   </div>`;
 
-export const submitButton = `<button id='submitBtn'>Submit</button>`;
+const submitButton = `<button id='submitBtn'>Submit</button>`;
 
-export const cancelButton = `<button id='cancelBtn'>Cancel</button>`;
+const cancelButton = `<button id='cancelBtn'>Cancel</button>`;
 
-export const projectAddButton = `<button id='projectAdd-Btn'>New Project</button>`;
+const projectAddButton = `<button id='projectAdd-Btn'>New Project</button>`;
 
-export const taskAddButton = `<button id='taskAdd-Btn'>New Task</button>`;
+const taskAddButton = `<button id='taskAdd-Btn'>New Task</button>`;
 
-export const enableButtons = () => {
+const enableButtons = () => {
   document.getElementById('projectAdd-Btn').disabled = false;
   document.getElementById('taskAdd-Btn').disabled = false;
 };
+
+export { projectForm, taskForm, submitButton, cancelButton, projectAddButton, taskAddButton, 
+  projectOption, enableButtons };
+  

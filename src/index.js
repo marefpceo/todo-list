@@ -1,36 +1,17 @@
-import { pageHeader, containerDiv, sectionArea, asideArea, section } from './pageLayout';
+import { initialPageLoad, section } from './pageLayout';
 import { addProject, addTask, getSelectedProject, projects } from './project';
 import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
 import { createProjectsMenu, projectsUl } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
 import displayProject from './displayContent';
-import { clearStorage, getFromStorage, storageAvailable } from './storeTodo';
+import { clearStorage, storageCheck } from './storeTodo';
+
 
 let currBtn = '';
 
-// window.onload = getFromStorage(); 
-const itemSet = (localStorage.getItem('projects') !== null);
-console.log(itemSet);
-
-// storageAvailable('localStorage');
-
-if (itemSet) {
-  const restoreTemp = getFromStorage();
-  for (let i = 0; i < restoreTemp.length; i += 1) {
-    projects.push(restoreTemp[i]);
-  }
-  console.log(restoreTemp);
-} else {
-  addProject('Personal');
-  addProject('Work');
-  addProject('School');
-}
-
-pageHeader();
-containerDiv();
-asideArea();
-sectionArea();
+storageCheck(projects);
+initialPageLoad();
 
 section.addEventListener('click', (e) => {
   if (e.target.id === 'projectAdd-Btn') {
@@ -70,9 +51,13 @@ modalFooter.addEventListener('click', (e) => {
 });
 
 projectsUl.addEventListener('click', (e) => {
-  const selection = e.target.id;
-  displayProject(selection);
-  console.log(selection);
+  if (!e.target.id) {
+    return;
+  }else {
+    const selection = e.target.id;
+    displayProject(selection);
+    console.log(selection);
+  }
 });
 
 document.getElementById('deleteBtn').addEventListener('click', (e) => {

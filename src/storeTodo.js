@@ -1,4 +1,6 @@
-export const storageAvailable = (type) => {
+import { addProject } from './project';
+
+const storageAvailable = (type) => {
   let storage;
   try {
       storage = window[type];
@@ -23,20 +25,20 @@ export const storageAvailable = (type) => {
   }
 };
 
-export const populateStorage = (inputFrom) => {
+const populateStorage = (inputFrom) => {
   let tempArray = [];
   localStorage.clear();
   tempArray = JSON.stringify(inputFrom);
   localStorage.setItem('projects', tempArray);
 };
 
-export const getFromStorage = () => {
+const getFromStorage = () => {
   const tempArray = localStorage.getItem('projects');
   const output = JSON.parse(tempArray);
   return output;
 };
 
-export const clearStorage = () => {
+const clearStorage = () => {
   const message = 'You are about to delete all Projects from storage. Do you wish to continue?';
   const confirmMessage = `ARE YOU SURE?? \nTheses changes cannot be undone after selecting 'OK'`;
   if (confirm(message) === true){
@@ -49,3 +51,21 @@ export const clearStorage = () => {
     }
   }
 };
+
+const storageCheck = (projects) => {
+  const itemSet = (localStorage.getItem('projects') !== null);
+
+  if (itemSet) {
+    const restoreTemp = getFromStorage();
+    for (let i = 0; i < restoreTemp.length; i += 1) {
+      projects.push(restoreTemp[i]);
+    }
+    console.log(restoreTemp);
+  } else {
+    addProject('Personal');
+    addProject('Work');
+    addProject('School');
+  }
+};
+
+export { storageCheck, clearStorage, populateStorage };

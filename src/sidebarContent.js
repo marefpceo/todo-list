@@ -43,12 +43,13 @@ const createProjectsMenu = () => {
     li.id = projects[i].projectId;
     li.innerHTML = projects[i].name;
     projectsUl.appendChild(li);
-    for (let j = 0; j < projects[i].tasks.length; j += 1){
-      const taskLi = document.createElement('li');
-      taskLi.innerHTML = projects[i].tasks[j].title;
-      taskUl.appendChild(taskLi);
-    }
-    li.appendChild(taskUl);
+    // for (let j = 0; j < projects[i].tasks.length; j += 1){
+    //   const taskLi = document.createElement('li');
+    //   taskLi.innerHTML = projects[i].tasks[j].title;
+    //   taskUl.appendChild(taskLi);
+    // }
+    // li.appendChild(taskUl);
+    // taskUl.style.display = 'none';
   }
   h2.innerHTML = 'Projects';
   projectsDiv.appendChild(h2);

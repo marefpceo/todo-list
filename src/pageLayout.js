@@ -66,4 +66,11 @@ const sectionArea = () => {
   container.appendChild(section);
 };
 
-export { pageHeader, asideArea, sectionArea, containerDiv, section, titleDiv };
+const initialPageLoad = () => {
+  pageHeader();
+  containerDiv();
+  asideArea();
+  sectionArea();
+};
+
+export { initialPageLoad, section, titleDiv };
