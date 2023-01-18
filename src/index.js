@@ -9,20 +9,23 @@ import { getFromStorage, storageAvailable } from './storeTodo';
 
 let currBtn = '';
 
-window.onload = getFromStorage(); 
-storageAvailable('localStorage');
-// console.log(getFromStorage());
+// window.onload = getFromStorage(); 
+const itemSet = (localStorage.getItem('projects') !== null);
+console.log(itemSet);
 
-if (localStorage.length === 1) {
+// storageAvailable('localStorage');
+
+if (itemSet) {
   const restoreTemp = getFromStorage();
   for (let i = 0; i < restoreTemp.length; i += 1) {
     projects.push(restoreTemp[i]);
   }
+  console.log(restoreTemp);
 } else {
   addProject('Personal');
   addProject('Work');
   addProject('School');
-}; 
+}
 
 pageHeader();
 containerDiv();
@@ -33,18 +36,18 @@ section.addEventListener('click', (e) => {
   if (e.target.id === 'projectAdd-Btn') {
     currBtn = e.target.id;
     modalContent(currBtn);
-  };
+  }
   if (e.target.id === 'taskAdd-Btn') {
     currBtn = e.target.id;
     modalContent(currBtn);
-  };
+  }
 });
 
 modalFooter.addEventListener('click', (e) => {
   if (e.target.id === 'cancelBtn') {
     clearModal();
     enableButtons();
-  };
+  }
   if (e.target.id === 'submitBtn') {
     if (currBtn === 'projectAdd-Btn') {
       const pName = document.getElementById('projectName');
@@ -53,7 +56,7 @@ modalFooter.addEventListener('click', (e) => {
       pName.value = '';
       clearModal();
       enableButtons();
-    };
+    }
     
     if (currBtn === 'taskAdd-Btn') {
       const taskObjIndex = getSelectedProject(getTaskInput().selectedProject);
@@ -62,8 +65,8 @@ modalFooter.addEventListener('click', (e) => {
       createProjectsMenu();
       clearModal();
       enableButtons();
-    };
-  };
+    }
+  }
 });
 
 projectsUl.addEventListener('click', (e) => {

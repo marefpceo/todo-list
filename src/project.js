@@ -3,13 +3,17 @@ import dateInput from 'date-fns/parseISO';
 import { populateStorage } from './storeTodo';
 
 const projects = [];
-let projectCount = 0;
+
+const getProjectCount = () => {
+  let projectCount = projects.length;
+  projectCount += 1;
+  return projectCount;
+}
 
 const createProject = (name) => {
   const project = {};
   project.name = name;
-  projectCount += 1; 
-  project.projectId = `2023${projectCount}`;
+  project.projectId = `2023${getProjectCount()}`;
   project.tasks = [];
 
   return project;

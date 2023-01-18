@@ -24,7 +24,7 @@ const createViewMenu = () => {
     img.src = viewOptions[i].icon;
     li.append(img, p);
     viewUl.appendChild(li);
-  };
+  }
   viewDiv.appendChild(viewUl);
 };
 
@@ -49,7 +49,7 @@ const createProjectsMenu = () => {
       taskUl.appendChild(taskLi);
     }
     li.appendChild(taskUl);
-  };
+  }
   h2.innerHTML = 'Projects';
   projectsDiv.appendChild(h2);
   projectsDiv.appendChild(projectsUl);
@@ -63,7 +63,7 @@ const createContacts = () => {
     const img = document.createElement('img');
     img.src = logos[i];
     contactDiv.appendChild(img);
-  };
+  }
 };
 
 export { createViewMenu, createProjectsMenu, createContacts, projectsUl };

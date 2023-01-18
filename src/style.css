@@ -19,7 +19,7 @@ body {
 
 #content {
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 1fr 7fr;
   min-height: 100vh;
 }
 
@@ -42,12 +42,11 @@ h1 {
 .logo {
   display: flex;
   align-items: center;
-  gap: 20px;  
+  gap:  20px;  
 }
 
 header img {
   width: 4rem;
-  height: auto;
 }
 
 .container {
