@@ -5,7 +5,7 @@ import { createProjectsMenu, projectsUl } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
 import displayProject from './displayContent';
-import { getFromStorage, storageAvailable } from './storeTodo';
+import { clearStorage, getFromStorage, storageAvailable } from './storeTodo';
 
 let currBtn = '';
 
@@ -73,4 +73,9 @@ projectsUl.addEventListener('click', (e) => {
   const selection = e.target.id;
   displayProject(selection);
   console.log(selection);
+});
+
+document.getElementById('deleteBtn').addEventListener('click', (e) => {
+  console.log(e);
+  clearStorage();
 });

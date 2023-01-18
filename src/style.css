@@ -6,6 +6,8 @@
   --header-bg: #354259;
   --dark-50: #35425932;
   --accent: #c2ded1;
+  --danger: #ff0000;
+  --danger-50: #ff000032;
 }
 
 * {
@@ -101,14 +103,32 @@ aside {
 
 #contactDiv {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logosDiv {
+  display: flex;
   justify-content: center;
   gap: 1.5rem;
   padding-top: 20px;
+  padding-bottom: 30px;
 }
 
-#contactDiv img {
+#logosDiv img {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+#deleteBtn {
+  background-color: var(--danger-50);
+  color: var(--secondary-text);
+  width: 80%;
+  height: 2rem;
+}
+
+#deleteBtn:hover {
+  background-color: var(--danger);
 }
 
 section {
@@ -252,6 +272,6 @@ button {
 }
 
 button:active {
-  transform: scale(0.9);
+  transform: scale(0.97);
 }
 

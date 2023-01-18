@@ -35,3 +35,17 @@ export const getFromStorage = () => {
   const output = JSON.parse(tempArray);
   return output;
 };
+
+export const clearStorage = () => {
+  const message = 'You are about to delete all Projects from storage. Do you wish to continue?';
+  const confirmMessage = `ARE YOU SURE?? \nTheses changes cannot be undone after selecting 'OK'`;
+  if (confirm(message) === true){
+    if (confirm(confirmMessage) === true) {
+      localStorage.clear();
+      sessionStorage.clear();
+      location.reload();
+    } else {
+      return;
+    }
+  }
+};

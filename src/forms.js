@@ -12,7 +12,7 @@ export const projectOption = () => {
     option.value = projects[i].projectId;
     option.textContent = projects[i].name;
     projectSelect.appendChild(option);
-  };
+  }
 };
 
 export const taskForm = `<div id='taskForm'>

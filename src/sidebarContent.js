@@ -58,12 +58,20 @@ const createProjectsMenu = () => {
 const createContacts = () => {
   const logos = [githubIcon, linkedinIcon, twitterIcon];
   const contactDiv = document.getElementById('contactDiv');
+  const logosDiv = document.createElement('div');
+  const deleteBtn = document.createElement('button');
+
+  logosDiv.id = 'logosDiv';
+  deleteBtn.id = 'deleteBtn';
+  deleteBtn.textContent = 'Delete Stored Data';
 
   for (let i = 0; i < logos.length; i += 1) {
     const img = document.createElement('img');
     img.src = logos[i];
-    contactDiv.appendChild(img);
+    logosDiv.appendChild(img);
   }
+  contactDiv.appendChild(logosDiv);
+  contactDiv.appendChild(deleteBtn);
 };
 
 export { createViewMenu, createProjectsMenu, createContacts, projectsUl };
