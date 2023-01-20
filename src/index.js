@@ -1,4 +1,4 @@
-import { initialPageLoad, section } from './pageLayout';
+import { initialPageLoad, section, toggleTaskOpacity } from './pageLayout';
 import { addProject, addTask, getSelectedProject, projects } from './project';
 import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
 import { createProjectsMenu, projectsUl } from './sidebarContent';
@@ -7,20 +7,25 @@ import { enableButtons } from './forms';
 import displayProject from './displayContent';
 import { clearStorage, storageCheck } from './storeTodo';
 
-
 let currBtn = '';
+const checkResults = storageCheck(projects);
 
-storageCheck(projects);
+if (checkResults === false) {
+  addProject('Personal');
+}
+
 initialPageLoad();
 
 section.addEventListener('click', (e) => {
   if (e.target.id === 'projectAdd-Btn') {
     currBtn = e.target.id;
     modalContent(currBtn);
+    toggleTaskOpacity('reduce');
   }
   if (e.target.id === 'taskAdd-Btn') {
     currBtn = e.target.id;
     modalContent(currBtn);
+    toggleTaskOpacity('reduce');
   }
 });
 
@@ -48,19 +53,18 @@ modalFooter.addEventListener('click', (e) => {
       enableButtons();
     }
   }
+  toggleTaskOpacity('increase');
 });
 
 projectsUl.addEventListener('click', (e) => {
   if (!e.target.id) {
     return;
-  }else {
-    const selection = e.target.id;
-    displayProject(selection);
-    console.log(selection);
   }
+  const selection = e.target.id;
+  displayProject(selection);
+  console.log(selection);
 });
 
-document.getElementById('deleteBtn').addEventListener('click', (e) => {
-  console.log(e);
+document.getElementById('deleteBtn').addEventListener('click', () => {
   clearStorage();
 });

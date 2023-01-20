@@ -1,5 +1,6 @@
 import format from 'date-fns/format';
 import checkListIcon from './assets/images/checklist.svg';
+import displayProject from './displayContent';
 import { projectAddButton, taskAddButton } from './forms';
 import { createViewMenu, createProjectsMenu, createContacts } from './sidebarContent';
 
@@ -53,8 +54,10 @@ const asideArea = () => {
 const sectionArea = () => {
   const sectionHead = document.createElement('div');
   const buttonDiv = document.createElement('div');
+  const sectionBody = document.createElement('div');
 
   sectionHead.id = 'sectionHead';
+  sectionBody.id = 'sectionBody';
   titleDiv.id = 'titleDiv';
   buttonDiv.id = 'buttonDiv';
   buttonDiv.innerHTML = projectAddButton;
@@ -63,7 +66,30 @@ const sectionArea = () => {
   sectionHead.appendChild(titleDiv);
   sectionHead.appendChild(buttonDiv);
   section.appendChild(sectionHead);
+  section.appendChild(sectionBody);
   container.appendChild(section);
+};
+
+//Action should be reduce or increase
+const toggleTaskOpacity = (action) => {
+  let h3color = document.querySelectorAll('.taskDiv h3');
+  let taskDivBg = document.querySelectorAll('.taskDiv');
+  let taskDivP = document.querySelectorAll('.taskDiv > div');
+  
+  if (action === 'reduce') {
+    for (let i = 0; i < h3color.length; i += 1) {
+      h3color[i].style.color = 'var(--dark-50)';
+      taskDivBg[i].style.backgroundColor = '#ffffff32';
+      taskDivP[i].style.color = 'var(--dark-50)';
+    }
+  }
+  if (action === 'increase') {
+    for (let i = 0; i < h3color.length; i += 1) {
+      h3color[i].style.color = 'var(--primary-text)';
+      taskDivBg[i].style.backgroundColor = '#ffffff';
+      taskDivP[i].style.color = 'var(--primary-text)';
+    }
+  }
 };
 
 const initialPageLoad = () => {
@@ -73,4 +99,4 @@ const initialPageLoad = () => {
   sectionArea();
 };
 
-export { initialPageLoad, section, titleDiv };
+export { initialPageLoad, toggleTaskOpacity, section, titleDiv };

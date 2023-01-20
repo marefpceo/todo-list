@@ -37,7 +37,7 @@ const createProjectsMenu = () => {
 
   let i;
   for (i = 0; i < projects.length; i += 1) {
-    const taskUl = document.createElement('ul');
+    // const taskUl = document.createElement('ul');
     const li = document.createElement('li');
     projectsUl.className = 'projects';
     li.id = projects[i].projectId;

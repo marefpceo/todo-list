@@ -1,5 +1,3 @@
-import { addProject } from './project';
-
 const storageAvailable = (type) => {
   let storage;
   try {
@@ -45,10 +43,8 @@ const clearStorage = () => {
     if (confirm(confirmMessage) === true) {
       localStorage.clear();
       sessionStorage.clear();
-      location.reload();
-    } else {
-      return;
-    }
+      window.location.reload();
+    } 
   }
 };
 
@@ -61,11 +57,9 @@ const storageCheck = (projects) => {
       projects.push(restoreTemp[i]);
     }
     console.log(restoreTemp);
-  } else {
-    addProject('Personal');
-    addProject('Work');
-    addProject('School');
-  }
+    return true;
+  } 
+    return false;
 };
 
 export { storageCheck, clearStorage, populateStorage };
