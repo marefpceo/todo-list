@@ -12,6 +12,7 @@ const displayProject = (projectId) => {
 
   for (let i = 0; i < projects[currProject].tasks.length; i += 1){
     const taskDiv = document.createElement('div');
+    const taskDivHead = document.createElement('div');
     const displayTitle = document.createElement('h3');
     const infoDiv = document.createElement('div');
     const displayDueDate = document.createElement('p');
@@ -22,13 +23,14 @@ const displayProject = (projectId) => {
     const task = projects[currProject].tasks[i];
 
     taskDiv.className = 'taskDiv';
+    taskDivHead.className = 'taskDivHead';
     contentDiv.className = 'contentDiv';
 
     displayTitle.innerText = task.title;
-    displayDueDate.innerText = task.dueDate;
-    displayPriority.innerText = task.priority;
-    displayDescription.innerText = task.description;
-    displayNotes.innerText = task.notes;
+    displayDueDate.innerText = `Due: ${task.dueDate}`;
+    displayPriority.innerText = `Pri: ${task.priority}`;
+    displayDescription.innerText = `Description: \n${task.description}`;
+    displayNotes.innerText = `Notes: \n${task.notes}`;
 
     contentDiv.appendChild(displayDescription);
     contentDiv.appendChild(displayNotes);
@@ -36,13 +38,22 @@ const displayProject = (projectId) => {
     infoDiv.appendChild(displayDueDate);
     infoDiv.appendChild(displayPriority);
 
-    taskDiv.appendChild(displayTitle);
+    taskDivHead.appendChild(displayTitle);
+    taskDivHead.appendChild(infoDiv);
+    taskDiv.appendChild(taskDivHead);
     taskDiv.appendChild(contentDiv);
-    taskDiv.appendChild(infoDiv);
     sectionBody.appendChild(taskDiv);
     section.appendChild(sectionBody);
     console.log(task);
   }
 };
 
-export default displayProject;
+const toggleTaskDiv = () => {
+  let toggleDiv = document.querySelector('.contentdiv').style.display;
+    // if (toggleDiv === 'none') {
+    //   toggleDiv = 'block';
+    // }
+    toggleDiv === 'none' ? 'block' : toggleDiv = 'none'; 
+};
+
+export { displayProject, toggleTaskDiv };
