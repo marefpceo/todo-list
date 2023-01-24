@@ -12,7 +12,7 @@ const displayProject = (projectId) => {
 
   for (let i = 0; i < projects[currProject].tasks.length; i += 1){
     const taskDiv = document.createElement('div');
-    const taskDivHead = document.createElement('div');
+    const taskDivHead = document.createElement('button');
     const displayTitle = document.createElement('h3');
     const infoDiv = document.createElement('div');
     const displayDueDate = document.createElement('p');
@@ -23,14 +23,15 @@ const displayProject = (projectId) => {
     const task = projects[currProject].tasks[i];
 
     taskDiv.className = 'taskDiv';
+    taskDivHead.type = 'button';
     taskDivHead.className = 'taskDivHead';
     contentDiv.className = 'contentDiv';
 
     displayTitle.innerText = task.title;
-    displayDueDate.innerText = `Due: ${task.dueDate}`;
-    displayPriority.innerText = `Pri: ${task.priority}`;
-    displayDescription.innerText = `Description: \n${task.description}`;
-    displayNotes.innerText = `Notes: \n${task.notes}`;
+    displayDueDate.innerHTML = `<b>Due:</b> ${task.dueDate}`;
+    displayPriority.innerHTML = `<b>Pri:</b> ${task.priority}`;
+    displayDescription.innerHTML = `<b>Description:</b> <br>${task.description}`;
+    displayNotes.innerHTML = `<b>Notes:</b> <br>${task.notes}`;
 
     contentDiv.appendChild(displayDescription);
     contentDiv.appendChild(displayNotes);
@@ -46,14 +47,24 @@ const displayProject = (projectId) => {
     section.appendChild(sectionBody);
     console.log(task);
   }
+  toggleTaskDiv();
 };
 
 const toggleTaskDiv = () => {
-  let toggleDiv = document.querySelector('.contentdiv').style.display;
-    // if (toggleDiv === 'none') {
-    //   toggleDiv = 'block';
-    // }
-    toggleDiv === 'none' ? 'block' : toggleDiv = 'none'; 
+  const taskBtn = document.querySelectorAll('.taskDivHead');
+
+  taskBtn.forEach(btn => {
+    btn.addEventListener('click', (e) =>{
+      let currentDiv = e.target;
+      if (currentDiv.nextElementSibling.style.display === 'block') {
+        currentDiv.nextElementSibling.style.display = 'none';
+      } else {
+        currentDiv.nextElementSibling.style.display = 'block';
+      }
+      console.log(currentDiv.nextElementSibling);
+    })
+  });
+
 };
 
 export { displayProject, toggleTaskDiv };

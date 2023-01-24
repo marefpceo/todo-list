@@ -74,13 +74,16 @@ const sectionArea = () => {
 const toggleTaskOpacity = (action) => {
   let h3color = document.querySelectorAll('.taskDiv h3');
   let taskDivBg = document.querySelectorAll('.taskDiv');
-  let taskDivP = document.querySelectorAll('.taskDiv > div');
+  let taskDivP = document.querySelectorAll('div.taskDiv');
+  let toggleBtn = document.querySelectorAll('.taskDivHead');
   
   if (action === 'reduce') {
     for (let i = 0; i < h3color.length; i += 1) {
       h3color[i].style.color = 'var(--dark-50)';
       taskDivBg[i].style.backgroundColor = '#ffffff32';
       taskDivP[i].style.color = 'var(--dark-50)';
+      toggleBtn[i].style.backgroundColor = '#ffffff32';
+      toggleBtn[i].style.color = 'var(--dark-50)';
     }
   }
   if (action === 'increase') {
@@ -88,6 +91,8 @@ const toggleTaskOpacity = (action) => {
       h3color[i].style.color = 'var(--primary-text)';
       taskDivBg[i].style.backgroundColor = '#ffffff';
       taskDivP[i].style.color = 'var(--primary-text)';
+      toggleBtn[i].style.backgroundColor = '#ffffff';
+      toggleBtn[i].style.color = 'var(--primary-text)';
     }
   }
 };

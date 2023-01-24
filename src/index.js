@@ -4,11 +4,12 @@ import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
 import { createProjectsMenu, projectsUl } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
-import { displayProject } from './displayContent';
+import { displayProject, toggleTaskDiv } from './displayContent';
 import { clearStorage, storageCheck } from './storeTodo';
 
 let currBtn = '';
 const checkResults = storageCheck(projects);
+
 
 if (checkResults === false) {
   addProject('Personal');
@@ -62,9 +63,13 @@ projectsUl.addEventListener('click', (e) => {
   }
   const selection = e.target.id;
   displayProject(selection);
-  console.log(selection);
 });
 
 document.getElementById('deleteBtn').addEventListener('click', () => {
   clearStorage();
 });
+
+
+
+
+
