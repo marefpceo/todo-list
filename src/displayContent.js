@@ -2,17 +2,18 @@ import { titleDiv } from './pageLayout';
 import { getSelectedProject, projects } from './project';
 import { section } from './pageLayout';
 
-const displayProject = (projectId) => {
-  const currProject = getSelectedProject(projectId);
+const displayTasks = (taskType) => {
+  const currProject = taskType;
   const sectionBody = document.getElementById('sectionBody');
 
   sectionBody.innerHTML = '';
-  titleDiv.innerHTML = projects[currProject].name;
+  
   console.log(currProject);
 
-  for (let i = 0; i < projects[currProject].tasks.length; i += 1){
+  for (let i = 0; i < currProject.length; i += 1){
     const taskDiv = document.createElement('div');
-    const taskDivHead = document.createElement('button');
+    const taskDivHead = document.createElement('div');
+    const taskDivBtn = document.createElement('button');
     const displayTitle = document.createElement('h3');
     const infoDiv = document.createElement('div');
     const displayDueDate = document.createElement('p');
@@ -20,11 +21,12 @@ const displayProject = (projectId) => {
     const contentDiv = document.createElement('div');
     const displayDescription = document.createElement('p');
     const displayNotes = document.createElement('p');
-    const task = projects[currProject].tasks[i];
+    const task = currProject[i];
 
     taskDiv.className = 'taskDiv';
-    taskDivHead.type = 'button';
     taskDivHead.className = 'taskDivHead';
+    taskDivBtn.type = 'button';
+    taskDivBtn.className = 'taskDivBtn';
     contentDiv.className = 'contentDiv';
 
     displayTitle.innerText = task.title;
@@ -41,30 +43,49 @@ const displayProject = (projectId) => {
 
     taskDivHead.appendChild(displayTitle);
     taskDivHead.appendChild(infoDiv);
-    taskDiv.appendChild(taskDivHead);
+    taskDivBtn.appendChild(taskDivHead);
+    taskDiv.appendChild(taskDivBtn);
     taskDiv.appendChild(contentDiv);
     sectionBody.appendChild(taskDiv);
     section.appendChild(sectionBody);
-    console.log(task);
   }
   toggleTaskDiv();
 };
 
-const toggleTaskDiv = () => {
-  const taskBtn = document.querySelectorAll('.taskDivHead');
-
-  taskBtn.forEach(btn => {
-    btn.addEventListener('click', (e) =>{
-      let currentDiv = e.target;
-      if (currentDiv.nextElementSibling.style.display === 'block') {
-        currentDiv.nextElementSibling.style.display = 'none';
-      } else {
-        currentDiv.nextElementSibling.style.display = 'block';
-      }
-      console.log(currentDiv.nextElementSibling);
-    })
-  });
-
+const displayProject = (projectId) => {
+  const selectedProject = getSelectedProject(projectId);
+  titleDiv.innerHTML = projects[selectedProject].name;
+  projects[selectedProject].tasks;
+  displayTasks(projects[selectedProject].tasks);
 };
 
-export { displayProject, toggleTaskDiv };
+const displayAll = () => {
+  const allTasks = [];
+
+  for (let i = 0; i < projects.length; i += 1) {
+    for (let j = 0; j < projects[i].tasks.length; j += 1) {
+      allTasks.push(projects[i].tasks[j]);
+    }
+  }
+  let sorted = allTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
+  document.getElementById('All')
+  console.log(sorted);
+};
+
+const toggleTaskDiv = () => {
+  const taskBtn = document.querySelectorAll('.taskDivBtn');
+
+  taskBtn.forEach(btn => {
+    btn.addEventListener('click', () =>{
+
+      if (btn.nextElementSibling.style.display === '' || btn.nextElementSibling.style.display === 'none') {
+        btn.nextElementSibling.style.display = 'block';
+      } else {
+        btn.nextElementSibling.style.display = 'none';
+      }
+    });
+  });
+};
+
+export { displayTasks, displayProject, displayAll };
