@@ -10,6 +10,7 @@ const getProjectCount = () => {
   return projectCount;
 }
 
+// Creates a new project
 const createProject = (name) => {
   const project = {};
   project.name = name;
@@ -27,6 +28,7 @@ const addProject = (pName) => {
   return projects;
 };
 
+// Creates individual tasks that can be assigned to available projects
 const createTask = (title, description, dueDate, priority, notes) => {
   const task = {};
   const inputDate = dateInput(dueDate);
@@ -50,6 +52,7 @@ const addTask = (taskObj, title, description, dueDate, priority, notes) => {
   console.log(newTask);
 };
 
+// Used project id to return the index of matching project
 const getSelectedProject = (projectId) => {
   const selection = projects.findIndex(item => item.projectId === projectId);
   return selection;

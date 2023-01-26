@@ -1,6 +1,5 @@
 import format from 'date-fns/format';
 import checkListIcon from './assets/images/checklist.svg';
-import { displayProject } from './displayContent';
 import { projectAddButton, taskAddButton } from './forms';
 import { createViewMenu, createProjectsMenu, createContacts } from './sidebarContent';
 
