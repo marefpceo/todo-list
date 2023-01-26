@@ -20,6 +20,9 @@ const createViewMenu = () => {
     const img = document.createElement('img');
     const p = document.createElement('p');
 
+    viewUl.id = 'views';
+
+    li.id = viewOptions[i].view;
     p.innerHTML = viewOptions[i].view;
     img.src = viewOptions[i].icon;
     li.append(img, p);
@@ -37,19 +40,11 @@ const createProjectsMenu = () => {
 
   let i;
   for (i = 0; i < projects.length; i += 1) {
-    // const taskUl = document.createElement('ul');
     const li = document.createElement('li');
     projectsUl.className = 'projects';
     li.id = projects[i].projectId;
     li.innerHTML = projects[i].name;
     projectsUl.appendChild(li);
-    // for (let j = 0; j < projects[i].tasks.length; j += 1){
-    //   const taskLi = document.createElement('li');
-    //   taskLi.innerHTML = projects[i].tasks[j].title;
-    //   taskUl.appendChild(taskLi);
-    // }
-    // li.appendChild(taskUl);
-    // taskUl.style.display = 'none';
   }
   h2.innerHTML = 'Projects';
   projectsDiv.appendChild(h2);

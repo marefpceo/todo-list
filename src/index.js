@@ -4,7 +4,7 @@ import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
 import { createProjectsMenu, projectsUl } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
-import { displayProject, toggleTaskDiv } from './displayContent';
+import { displayProject, toggleDisplayView } from './displayContent';
 import { clearStorage, storageCheck } from './storeTodo';
 
 let currBtn = '';
@@ -16,6 +16,7 @@ if (checkResults === false) {
 }
 
 initialPageLoad();
+displayProject('20231');
 
 section.addEventListener('click', (e) => {
   if (e.target.id === 'projectAdd-Btn') {
@@ -68,8 +69,3 @@ projectsUl.addEventListener('click', (e) => {
 document.getElementById('deleteBtn').addEventListener('click', () => {
   clearStorage();
 });
-
-
-
-
-

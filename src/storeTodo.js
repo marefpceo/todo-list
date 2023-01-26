@@ -56,7 +56,6 @@ const storageCheck = (projects) => {
     for (let i = 0; i < restoreTemp.length; i += 1) {
       projects.push(restoreTemp[i]);
     }
-    console.log(restoreTemp);
     return true;
   } 
     return false;
