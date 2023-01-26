@@ -4,7 +4,7 @@ import { modalFooter, modalContent, clearModal, getTaskInput } from './modals';
 import { createProjectsMenu, projectsUl } from './sidebarContent';
 import './style.css';
 import { enableButtons } from './forms';
-import { displayProject, toggleDisplayView } from './displayContent';
+import { displayProject } from './displayContent';
 import { clearStorage, storageCheck } from './storeTodo';
 
 let currBtn = '';
