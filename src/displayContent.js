@@ -2,8 +2,9 @@ import { titleDiv } from './pageLayout';
 import { getSelectedProject, projects } from './project';
 import { section } from './pageLayout';
 import { format } from 'date-fns/esm';
-import { addDays } from 'date-fns';
-import { populateStorage, clearStorage } from './storeTodo';
+import { addDays, parseISO } from 'date-fns';
+import { populateStorage } from './storeTodo';
+import { modalContent } from './modals';
 
 // Creates the html for the task objects and displays inputed tasks to section area
 const displayTasks = (taskType) => {
@@ -38,6 +39,7 @@ const displayTasks = (taskType) => {
     contentDiv.className = 'contentDiv';    
     taskFooter.className = 'taskFooter';
     editBtn.type = 'button';
+    editBtn.id = 'edit';
     editBtn.innerHTML = 'Edit';
     
 
@@ -68,6 +70,7 @@ const displayTasks = (taskType) => {
   toggleTaskDiv();
   toggleDisplayView();
   deleteTask();
+  editTask();
 };
 
 // Displays all tasks within the selected project
@@ -149,6 +152,29 @@ const deleteTask = () => {
       }
     });
   });  
+};
+
+const editTask = () => {
+  const editTaskBtn = document.querySelectorAll('#edit');
+
+  editTaskBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentTaskDiv = btn.closest('div.taskDiv').firstElementChild;
+      const taskProject = getSelectedProject(currentTaskDiv.className);
+      const taskEdit = projects[taskProject].tasks[currentTaskDiv.name - 1];
+      const dueDate = new Date(taskEdit.dueDate);
+      modalContent('taskAdd-Btn');
+      document.querySelector('.modalHeader > h3').innerHTML = 'Edit Task';
+      
+      document.getElementById('task-title').value = taskEdit.title;
+      document.getElementById('task-description').value = taskEdit.description;
+      document.getElementById('due-date').defaultValue = format(dueDate, 'yyyy-MM-dd');
+      document.getElementById('priority').value = taskEdit.priority;
+      document.getElementById('project-select').value = projects[taskProject].name;
+      document.getElementById('notes').value = taskEdit.notes;
+
+    });
+  });
 };
 
 export { displayTasks, displayProject };
