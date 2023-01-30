@@ -3,6 +3,7 @@ import { getSelectedProject, projects } from './project';
 import { section } from './pageLayout';
 import { format } from 'date-fns/esm';
 import { addDays } from 'date-fns';
+import { populateStorage, clearStorage } from './storeTodo';
 
 // Creates the html for the task objects and displays inputed tasks to section area
 const displayTasks = (taskType) => {
@@ -29,6 +30,7 @@ const displayTasks = (taskType) => {
 
     taskDiv.className = 'taskDiv';
     checkComplete.setAttribute('type', 'checkbox');
+    checkComplete.name = i + 1;
     taskDivHead.className = 'taskDivHead';
     taskDivBtn.type = 'button';
     taskDivBtn.className = 'taskDivBtn';
@@ -64,6 +66,7 @@ const displayTasks = (taskType) => {
   }
   toggleTaskDiv();
   toggleDisplayView();
+  deleteTask();
 };
 
 // Displays all tasks within the selected project
@@ -90,7 +93,8 @@ const toggleDisplayView = () => {
   // Sorts all tasks in order by date
   let sorted = allTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
   // Filters all tasks due within the next week
-  let weekly = sorted.filter(item => new Date(item.dueDate) <= endWeek && new Date(item.dueDate) >= new Date(date));
+  let weekly = sorted.filter(item => new Date(item.dueDate) <= endWeek && 
+    new Date(item.dueDate) >= new Date(date));
   // Filters all tasks due on current date
   let today = sorted.filter(item => item.dueDate == date);
   
@@ -126,6 +130,27 @@ const toggleTaskDiv = () => {
       }
     });
   });
+};
+
+const deleteTask = () => {
+  const checkbox = document.querySelectorAll('input[type=checkbox]');
+
+  checkbox.forEach(box => {   
+    box.addEventListener('change', () => {
+      const taskIndex = box.name;
+      // const test = projects[0].tasks;
+
+      if (box.checked === true) {
+        projects[0].tasks.splice(taskIndex - 1, 1);
+        console.log(projects);   
+        box.parentElement.remove();
+        localStorage.clear();
+        populateStorage(projects); 
+        window.location.reload();    
+      }
+      
+    });
+  });  
 };
 
 export { displayTasks, displayProject };

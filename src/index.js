@@ -8,7 +8,7 @@ import { displayProject } from './displayContent';
 import { clearStorage, storageCheck } from './storeTodo';
 
 let currBtn = '';
-let selection = '';
+let selection = '20231';
 const checkResults = storageCheck(projects);
 
 
@@ -49,8 +49,9 @@ modalFooter.addEventListener('click', (e) => {
     
     if (currBtn === 'taskAdd-Btn') {
       const taskObjIndex = getSelectedProject(getTaskInput().selectedProject);
+      selection = getTaskInput().selectedProject;
       addTask(taskObjIndex, getTaskInput().title, getTaskInput().description,
-      getTaskInput().dueDate, getTaskInput().priority, getTaskInput().notes);
+      getTaskInput().dueDate, getTaskInput().priority, getTaskInput().notes, getTaskInput().selectedProject);
       createProjectsMenu();
       clearModal();
       enableButtons();
@@ -66,7 +67,6 @@ projectsUl.addEventListener('click', (e) => {
   }
   selection = e.target.id;
   displayProject(selection);
-  console.log(selection);
 });
 
 document.getElementById('deleteBtn').addEventListener('click', () => {

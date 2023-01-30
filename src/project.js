@@ -28,7 +28,7 @@ const addProject = (pName) => {
 };
 
 // Creates individual tasks that can be assigned to available projects
-const createTask = (title, description, dueDate, priority, notes) => {
+const createTask = (title, description, dueDate, priority, notes, taskProject) => {
   const task = {};
   const inputDate = dateInput(dueDate);
   
@@ -38,17 +38,16 @@ const createTask = (title, description, dueDate, priority, notes) => {
   task.priority = priority;
   task.notes = notes;
   task.createDate = format(Date.now(), 'MM/dd/yyyy');
-  task.completed = false;
+  task.projectId = taskProject;
   
   return task;
  };
 
  // Adds created tasks to project task property and to localStorage
-const addTask = (taskObj, title, description, dueDate, priority, notes) => {
-  const newTask = createTask(title, description, dueDate, priority, notes);
+const addTask = (taskObj, title, description, dueDate, priority, notes, taskProject) => {
+  const newTask = createTask(title, description, dueDate, priority, notes, taskProject);
   projects[taskObj].tasks.push(newTask);
   populateStorage(projects);
-  console.log(newTask);
 };
 
 // Used project id to return the index of matching project

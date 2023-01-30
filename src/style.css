@@ -54,6 +54,7 @@ header img {
 .container {
   display: grid;
   grid-template-columns: 15% 85%; 
+  max-height: 100vh;
 }
 
 aside {
@@ -283,7 +284,7 @@ button:active {
   gap: 15px;
   padding-top: 15px;
   overflow-y: auto;
-  max-height: 80%;
+  height: 700px;
 }
 
 input[type=checkbox] {
