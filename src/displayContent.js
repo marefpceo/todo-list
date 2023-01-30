@@ -31,6 +31,7 @@ const displayTasks = (taskType) => {
     taskDiv.className = 'taskDiv';
     checkComplete.setAttribute('type', 'checkbox');
     checkComplete.name = i + 1;
+    checkComplete.className = task.projectId;
     taskDivHead.className = 'taskDivHead';
     taskDivBtn.type = 'button';
     taskDivBtn.className = 'taskDivBtn';
@@ -138,17 +139,14 @@ const deleteTask = () => {
   checkbox.forEach(box => {   
     box.addEventListener('change', () => {
       const taskIndex = box.name;
-      // const test = projects[0].tasks;
 
       if (box.checked === true) {
-        projects[0].tasks.splice(taskIndex - 1, 1);
-        console.log(projects);   
+        const taskProject = getSelectedProject(box.className); 
+        projects[taskProject].tasks.splice(taskIndex - 1, 1);   
         box.parentElement.remove();
         localStorage.clear();
         populateStorage(projects); 
-        window.location.reload();    
       }
-      
     });
   });  
 };
