@@ -8,7 +8,7 @@ const getProjectCount = () => {
   let projectCount = projects.length;
   projectCount += 1;
   return projectCount;
-}
+};
 
 // Creates a new project
 const createProject = (name) => {
@@ -16,7 +16,6 @@ const createProject = (name) => {
   project.name = name;
   project.projectId = `2023${getProjectCount()}`;
   project.tasks = [];
-
   return project;
 };
 
@@ -56,6 +55,6 @@ const addTask = (taskObj, title, description, dueDate, priority, notes) => {
 const getSelectedProject = (projectId) => {
   const selection = projects.findIndex(item => item.projectId === projectId);
   return selection;
-}
+};
 
 export { projects, addProject, addTask, createTask, getSelectedProject };

@@ -32,9 +32,9 @@ const taskForm = `<div id='taskForm'>
                     <div>  
                       <label for='priority'>Priority: </label>
                       <select name='priority' id='priority' required>
-                        <option value='low'>Low</option>
-                        <option value='medium'>Medium</option>
-                        <option value='high'>High</option>
+                        <option value='Low'>Low</option>
+                        <option value='Medium'>Medium</option>
+                        <option value='High'>High</option>
                       </select>
                     </div>
                     <div>  

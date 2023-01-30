@@ -16,32 +16,44 @@ const displayTasks = (taskType) => {
     const taskDivHead = document.createElement('div');
     const taskDivBtn = document.createElement('button');
     const displayTitle = document.createElement('h3');
+    const checkComplete = document.createElement('input');
     const infoDiv = document.createElement('div');
     const displayDueDate = document.createElement('p');
     const displayPriority = document.createElement('p');
     const contentDiv = document.createElement('div');
     const displayDescription = document.createElement('p');
     const displayNotes = document.createElement('p');
+    const taskFooter = document.createElement('div');
+    const editBtn = document.createElement('button');
     const task = currProject[i];
 
     taskDiv.className = 'taskDiv';
+    checkComplete.setAttribute('type', 'checkbox');
     taskDivHead.className = 'taskDivHead';
     taskDivBtn.type = 'button';
     taskDivBtn.className = 'taskDivBtn';
-    contentDiv.className = 'contentDiv';
+    contentDiv.className = 'contentDiv';    
+    taskFooter.className = 'taskFooter';
+    editBtn.type = 'button';
+    editBtn.innerHTML = 'Edit';
+    
 
-    displayTitle.innerText = task.title;
+    displayTitle.innerHTML = task.title;
     displayDueDate.innerHTML = `<b>Due:</b> ${task.dueDate}`;
     displayPriority.innerHTML = `<b>Pri:</b> ${task.priority}`;
     displayDescription.innerHTML = `<b>Description:</b> <br>${task.description}`;
     displayNotes.innerHTML = `<b>Notes:</b> <br>${task.notes}`;
 
+    taskFooter.appendChild(editBtn);
+
     contentDiv.appendChild(displayDescription);
     contentDiv.appendChild(displayNotes);
+    contentDiv.appendChild(taskFooter);    
 
     infoDiv.appendChild(displayDueDate);
     infoDiv.appendChild(displayPriority);
 
+    taskDiv.appendChild(checkComplete);
     taskDivHead.appendChild(displayTitle);
     taskDivHead.appendChild(infoDiv);
     taskDivBtn.appendChild(taskDivHead);
@@ -74,12 +86,13 @@ const toggleDisplayView = () => {
       allTasks.push(projects[i].tasks[j]);
     }
   }
+
   // Sorts all tasks in order by date
   let sorted = allTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
   // Filters all tasks due within the next week
   let weekly = sorted.filter(item => new Date(item.dueDate) <= endWeek && new Date(item.dueDate) >= new Date(date));
   // Filters all tasks due on current date
-  let today = sorted.filter(item => new Date(item.dueDate) == new Date(date));
+  let today = sorted.filter(item => item.dueDate == date);
   
   all.forEach(view => {
     view.addEventListener('click', () =>{
@@ -88,11 +101,11 @@ const toggleDisplayView = () => {
         displayTasks(sorted);
       }
       if (view.id === 'Week'){
-        titleDiv.innerHTML = 'Week (next 7 days)';
+        titleDiv.innerHTML = 'Week';
         displayTasks(weekly);
       }
       if (view.id === 'Today') {
-        titleDiv.innerHTML = 'Today'
+        titleDiv.innerHTML = 'Today';
         displayTasks(today);
       }
     });

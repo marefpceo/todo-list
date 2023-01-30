@@ -8,6 +8,7 @@ import { displayProject } from './displayContent';
 import { clearStorage, storageCheck } from './storeTodo';
 
 let currBtn = '';
+let selection = '';
 const checkResults = storageCheck(projects);
 
 
@@ -53,6 +54,7 @@ modalFooter.addEventListener('click', (e) => {
       createProjectsMenu();
       clearModal();
       enableButtons();
+      displayProject(selection);
     }
   }
   toggleTaskOpacity('increase');
@@ -62,8 +64,9 @@ projectsUl.addEventListener('click', (e) => {
   if (!e.target.id) {
     return;
   }
-  const selection = e.target.id;
+  selection = e.target.id;
   displayProject(selection);
+  console.log(selection);
 });
 
 document.getElementById('deleteBtn').addEventListener('click', () => {
