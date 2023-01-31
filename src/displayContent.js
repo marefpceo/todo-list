@@ -1,10 +1,11 @@
 import { titleDiv } from './pageLayout';
-import { getSelectedProject, projects } from './project';
+import { getSelectedProject, projects, updateTask } from './project';
 import { section } from './pageLayout';
 import { format } from 'date-fns/esm';
-import { addDays, parseISO } from 'date-fns';
+import { addDays } from 'date-fns';
 import { populateStorage } from './storeTodo';
-import { modalContent } from './modals';
+import { getTaskInput, modalContent, clearModal, modalFooter } from './modals';
+import { enableButtons } from './forms';
 
 // Creates the html for the task objects and displays inputed tasks to section area
 const displayTasks = (taskType) => {
@@ -156,12 +157,14 @@ const deleteTask = () => {
 
 const editTask = () => {
   const editTaskBtn = document.querySelectorAll('#edit');
+  let taskProject, taskEdit, taskIndex;
 
   editTaskBtn.forEach(btn => {
     btn.addEventListener('click', () => {
       const currentTaskDiv = btn.closest('div.taskDiv').firstElementChild;
-      const taskProject = getSelectedProject(currentTaskDiv.className);
-      const taskEdit = projects[taskProject].tasks[currentTaskDiv.name - 1];
+      taskIndex = currentTaskDiv.name - 1;
+      taskProject = getSelectedProject(currentTaskDiv.className);
+      taskEdit = projects[taskProject].tasks[taskIndex];
       const dueDate = new Date(taskEdit.dueDate);
       modalContent('taskAdd-Btn');
       document.querySelector('.modalHeader > h3').innerHTML = 'Edit Task';
@@ -170,10 +173,21 @@ const editTask = () => {
       document.getElementById('task-description').value = taskEdit.description;
       document.getElementById('due-date').defaultValue = format(dueDate, 'yyyy-MM-dd');
       document.getElementById('priority').value = taskEdit.priority;
-      document.getElementById('project-select').value = projects[taskProject].name;
+      document.getElementById('project-select').value = projects[taskProject].projectId;
       document.getElementById('notes').value = taskEdit.notes;
-
     });
+  });
+
+  modalFooter.addEventListener('click', (e) => {
+    if (e.target.id === 'submitBtn') {
+    updateTask(taskProject, taskIndex, getTaskInput().title, getTaskInput().description,
+    getTaskInput().dueDate, getTaskInput().priority, getTaskInput().notes, getTaskInput().selectedProject);
+    clearModal();
+    enableButtons();
+    localStorage.clear();
+    populateStorage(projects);
+    displayProject(getTaskInput().selectedProject);
+    }
   });
 };
 

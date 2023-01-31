@@ -50,10 +50,20 @@ const addTask = (taskObj, title, description, dueDate, priority, notes, taskProj
   populateStorage(projects);
 };
 
+// Edit tasks already created
+const updateTask = (taskObj, taskIndex, title, description, dueDate, priority, notes, taskProject) => {
+  projects[taskObj].tasks[taskIndex].title = title;
+  projects[taskObj].tasks[taskIndex].description = description;
+  projects[taskObj].tasks[taskIndex].dueDate = dueDate;
+  projects[taskObj].tasks[taskIndex].priority = priority;
+  projects[taskObj].tasks[taskIndex].notes = notes;
+  projects[taskObj].tasks[taskIndex].projectId = taskProject;
+};
+
 // Used project id to return the index of matching project
 const getSelectedProject = (projectId) => {
   const selection = projects.findIndex(item => item.projectId === projectId);
   return selection;
 };
 
-export { projects, addProject, addTask, createTask, getSelectedProject };
+export { projects, addProject, addTask, createTask, getSelectedProject, updateTask };
